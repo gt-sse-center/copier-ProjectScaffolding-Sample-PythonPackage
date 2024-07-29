@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>copier-ProjectScaffolding-Sample-PythonPackage Post Generation Actions</title>
+  </head>
+  <style>
+    body {
+      font-family: "Open Sans", sans-serif;
+    }
+
+    details {
+      width: 100%;
+      overflow: hidden; /* Keep this line to prevent an odd blue outline around the element in Safari. */
+    }
+
+    details summary {
+      display: block;
+    }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details summary span {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-left: 1rem;
+      background: #444;
+      color: #fff;
+      height: 4rem;
+    }
+
+    details summary span:hover {
+      cursor: pointer;
+    }
+
+    details summary span::before {
+      content: "►";
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      margin-right: 0.5rem;
+      transition: rotate 200ms 400ms ease-out;
+    }
+
+    details[open] summary span::before {
+      rotate: 90deg;
+      transition: rotate 200ms ease-out;
+    }
+
+    details summary span input {
+      margin-right: 0.75rem;
+    }
+
+    div.details-content {
+      box-sizing: border-box;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 10px;
+      border: 2px solid transparent;
+      transition: max-height 400ms ease-out, border 0ms 400ms linear;
+      background-color: rgba(0, 0, 0, 0.05);
+      margin-bottom: 1rem;
+    }
+
+    details[open] + div.details-content {
+      max-height: 800px; /* Set a max-height value enough to show all the content */
+      border-color: #888;
+      transition: max-height 400ms ease-out, border 0ms linear;
+    }
+
+    code {
+      background-color: rgba(0, 0, 0, 0.10);
+    }
+
+  </style>
+  <body>
+    <h1>copier-ProjectScaffolding-Sample-PythonPackage Post Generation Actions</h1>
+    <p>The following steps must be completed in the order listed now that your project has been generated. Check the box next to each step once it is completed.</p>
+
+    <details>
+    <summary>
+        <span role="term"><input type="checkbox" id="update-github-settings">1) Update GitHub Settings</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will update GitHub settings to allow the creation of git tags during a release.</p>
+<ol>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/actions" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/actions</a>.</li>
+  <li>In the "Workflow permissions" section...</li>
+  <li>Select "Read and write permissions".</li>
+  <li>Click the "Save" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="create-a-temporary-pypi-token">2) Create a Temporary PyPi Token</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will create a temporary <a href="https://pypi.org" target="_blank">PyPi</a> token used to publish the python package for the first time. The token created will be scoped to all of your projects on PyPi (which provides too much access). Once the package has been published for the first time, we will delete this temporary token and create a new one that is scoped to the single project.</p>
+<ol>
+  <li>Visit <a href="https://pypi.org/manage/account/token/" target="_blank">https://pypi.org/manage/account/token/</a>.</li>
+  <li>
+    <p>Enter the values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Token name:</th>
+          <td><code>Temporary CI Publish Action (copier_ProjectScaffolding_Sample_PythonPackage)</code></td>
+        </tr>
+        <tr>
+          <th>Scope:</th>
+          <td><code>Entire account (all projects)</code></td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Create token" button.</li>
+  <li>Click the "Copy token" button for use in the next step.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="save-the-temporary-pypi-token-as-a-github-secret">3) Save the Temporary PyPi Token as a GitHub Secret</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will save the PyPi token just created as a <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions" target="_blank">GitHub Action secret</a>.</p>
+<ol>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new</a>.</li>
+  <li>
+    <p>Enter the values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td><code>PYPI_TOKEN</code></td>
+        </tr>
+        <tr>
+          <th>Secret:</th>
+          <td>&lt;paste the token generated in the previous step&gt;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Add secret" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="create-a-github-personal-access-token-for-gists">4) Create a GitHub Personal Access Token for gists</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will create a GitHub Personal Access Token (PAT) used when persisting code coverage information between Continuous Integration runs.</p>
+<ol>
+  <li>Visit <a href="https://github.com/settings/tokens?type=beta" target="_blank">https://github.com/settings/tokens?type=beta</a>.</li>
+  <li>Click the "Generate new token" button.</li>
+  <li>Name the token <code>GitHub Workflow Gist (copier-ProjectScaffolding-Sample-PythonPackage)</code>.</li>
+  <li>In the Repository access section...</li>
+  <li>Select "Only select repositories"...</li>
+  <li>Select <code>copier-ProjectScaffolding-Sample-PythonPackage</code>.</li>
+  <li>In the "Permissions" section...</li>
+  <li>Press the "Account permissions" dropdown...</li>
+  <li>Select the "Gists" section...</li>
+  <li>Click the "Access: No access" dropdown button...</li>
+  <li>Select "Read and write".</li>
+  <li>Click the "Generate token" button.</li>
+  <li>Copy the token for use in the next step.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="save-the-github-personal-access-token-for-gists">5) Save the GitHub Personal Access Token for gists</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will save the GitHub Personal Access Token just created as a <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions" target="_blank">GitHub Action secret</a>.</p>
+<ol>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new</a>.</li>
+  <li>
+    <p>Enter the values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td><code>GIST_TOKEN</code></td>
+        </tr>
+        <tr>
+          <th>Secret:</th>
+          <td>&lt;paste the token generated in the previous step&gt;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Add secret" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="save-the-minisign-private-key">6) Save the Minisign Private Key</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will save the Minisign private key just created as a <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions" target="_blank">GitHub Action secret</a>.</p>
+<ol>
+  <li>Open `minisign_key.pri` in a text editor and copy the contents.</li>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/new</a>.</li>
+  <li>
+    <p>Enter the values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td><code>MINISIGN_PRIVATE_KEY</code></td>
+        </tr>
+        <tr>
+          <th>Secret:</th>
+          <td>&lt;paste the private key previously copied&gt;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Add secret" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="store-the-minisign-private-key">7) Store the Minisign Private Key</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>Store the Minisign private key in a secure location. Once you have stored the key, you can delete it from your local machine.</p>
+<p>Note that you should NEVER force <code>minisign_key.pri</code> into source control.</p>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="initialize-the-git-repository">8) Initialize the git repository</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will commit the files generated in git and push the changes.</p>
+
+<p>Open a terminal window, navigate to your repository, and run the following commands:</p>
+
+1. <code>git add --all</code><br/>
+2. <code>git update-index --chmod=+x "Bootstrap.sh"</code><br/>
+3. <code>git commit -m "🎉 Initial commit"</code><br/>
+4. <code>git push</code><br/>
+</p>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="verify-the-ci/cd-workflow">9) Verify the CI/CD Workflow</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will verify that the GitHub Action workflow completed successfully.</p>
+<ol>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/actions" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/actions</a>.</li>
+  <li>Select the most recent workflow.</li>
+  <li>Wait for the workflow to complete successfully.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="delete-the-temporary-pypi-token">10) Delete the temporary PyPi Token</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In an earlier step, we created a temporary <a href="https://pypi.org" target="_blank">PyPi</a> token. In this step, we will delete that token. A new token to replace it will be created in the steps that follow.</p>
+<ol>
+  <li>Visit <a href="https://pypi.org/manage/account/" target="_blank">https://pypi.org/manage/account/</a>.</li>
+  <li>Find the token named <code>Temporary CI Publish Action (copier_ProjectScaffolding_Sample_PythonPackage)</code>...</li>
+  <li>Click the "Options" dropdown button...</li>
+  <li>Select "Remove token".</li>
+  <li>In the dialog box that appears...</li>
+  <li>Enter your password.</li>
+  <li>Click the "Remove API token" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="create-an-official-pypi-token">11) Create an Official PyPi Token</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we create a new token scoped only to "copier_ProjectScaffolding_Sample_PythonPackage".</p>
+
+<ol>
+  <li>Visit <a href="https://pypi.org/manage/account/token/" target="_blank">https://pypi.org/manage/account/token/</a>.</li>
+  <li>
+    <p>Enter the values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Token name:</th>
+          <td><code>CI Publish Action (copier_ProjectScaffolding_Sample_PythonPackage)</code></td>
+        </tr>
+        <tr>
+          <th>Scope:</th>
+          <td><code>Project: copier_ProjectScaffolding_Sample_PythonPackage</code></td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Create token" button.</li>
+  <li>Click the "Copy token" button for use in the next step.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="update-the-github-secret-with-the-official-pypi-token">12) Update the GitHub Secret with the Official PyPi Token</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will save the PyPi token just created as a <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions" target="_blank">GitHub Action secret</a>.</p>
+<ol>
+  <li>Visit <a href="https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/PYPI_TOKEN" target="_blank">https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/settings/secrets/actions/PYPI_TOKEN</a>.</li>
+  <li>In the "Value" text window, paste the token generated in the previous step.</li>
+  <li>Click "Update secret".</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="update-pyproject.toml">13) Update pyproject.toml</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>Python development tools, package dependencies, and packaging instructions are configured in <code>pyproject.toml</code>. Please visit <a href="https://packaging.python.org/en/latest/guides/writing-pyproject-toml/" target="_blank">this link</a> for more information on these files.</p>
+<p>Please search for and replace all <code>TODO:</code> comments in <code>pyproject.toml</code>.</p>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="update-maintainers.md">14) Update MAINTAINERS.md</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>Please search for and replace all <code>TODO:</code> comments in <code>MAINTAINERS.md</code>.</p>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="update-readme.md">15) Update README.md</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>Please search for and replace all <code>TODO:</code> comments in <code>README.md</code>.</p>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[basics]-(1-of-6)">16) OpenSSF Best Practices Badge [Basics] (1 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will populate the "Basics" section of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#basics" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#basics</a>.</li>
+  <li>
+    <p>Search for these options and set them to the following values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Additional Info</th>
+        </tr>
+        <tr>
+          <td>interact</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>contribution</td>
+          <td>Met</td>
+          <td><code>Non-trivial contribution file in repository: &lt;https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md&gt;</code></td>
+        </tr>
+        <tr>
+          <td>contribution_requirements</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md</code></td>
+        </tr>
+        <tr>
+          <td>What license(s) is the project released under?</td>
+          <td>MIT</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>floss_license</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>floss_license_osi</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>license_location</td>
+          <td>Met</td>
+          <td><code>Non-trivial license location file in repository: &lt;https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/LICENSE.txt&gt;</code></td>
+        </tr>
+        <tr>
+          <td>discussion</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>english</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Submit (and exit)" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[change-control]-(2-of-6)">17) OpenSSF Best Practices Badge [Change Control] (2 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will populate the "Change Control" section of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#changecontrol" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#changecontrol</a>.</li>
+  <li>
+    <p>Search for these options and set them to the following values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Additional Info</th>
+        </tr>
+        <tr>
+          <td>repo_public</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>repo_track</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>repo_interim</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>repo_distributed</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>version_unique</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>version_semver</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>version_tags</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>release_notes</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/releases/latest</code></td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Submit (and exit)" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[reporting]-(3-of-6)">18) OpenSSF Best Practices Badge [Reporting] (3 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will populate the "Reporting" section of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#reporting" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#reporting</a>.</li>
+  <li>
+    <p>Search for these options and set them to the following values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Additional Info</th>
+        </tr>
+        <tr>
+          <td>report_process</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md</code></td>
+        </tr>
+        <tr>
+          <td>report_tracker</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>report_responses</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>report_archive</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/issues</code></td>
+        </tr>
+        <tr>
+          <td>vulnerability_report_process</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/SECURITY.md</code></td>
+        </tr>
+        <tr>
+          <td>vulnerability_report_private</td>
+          <td>Met</td>
+          <td><code>https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/SECURITY.md</code></td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Submit (and exit)" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[quality]-(4-of-6)">19) OpenSSF Best Practices Badge [Quality] (4 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will populate the "Quality" section of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#quality" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#quality</a>.</li>
+  <li>
+    <p>Search for these options and set them to the following values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Additional Info</th>
+        </tr>
+        <tr>
+          <td>build</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>build_common_tools</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>build_floss_tools</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>test</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>test_invocation</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>test_most</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>test_continuous_integration</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>test_policy</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>tests_are_added</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>tests_documented_added</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>warnings</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>warnings_fixed</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>warnings_strict</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Submit (and exit)" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[analysis]-(5-of-6)">20) OpenSSF Best Practices Badge [Analysis] (5 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will populate the "Analysis" section of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#analysis" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0#analysis</a>.</li>
+  <li>
+    <p>Search for these options and set them to the following values:</p>
+    <p>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Value</th>
+          <th>Additional Info</th>
+        </tr>
+        <tr>
+          <td>static_analysis</td>
+          <td>Met</td>
+          <td><code>pylint, CodeQL</code></td>
+        </tr>
+        <tr>
+          <td>static_analysis_common_vulnerabilities</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>static_analysis_often</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>dynamic_analysis</td>
+          <td>Met</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>dynamic_analysis_unsafe</td>
+          <td>N/A</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </p>
+  </li>
+  <li>Click the "Submit (and exit)" button.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="openssf-best-practices-badge-[manual-changes]-(6-of-6)">21) OpenSSF Best Practices Badge [Manual Changes] (6 of 6)</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>In this step, we will manually populate the remaining questions across all sections of the OpenSSF Best Practices Badge.</p>
+<ol>
+  <li>Visit <a href="https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0" target="_blank">https://www.bestpractices.dev/en/projects/9264/edit?criteria_level=0</a>.</li>
+  <li>Update the remaining questions in all sections basic on information specific to your project.</li>
+</ol>
+
+</div>
+
+<details>
+    <summary>
+        <span role="term"><input type="checkbox" id="delete-this-file">22) Delete this file</span>
+    </summary>
+</details>
+<div role="definition" class="details-content">
+    <p>After you have completed all the steps, you can delete this file.</p>
+<p>Now your project is ready to go!</p>
+
+</div>
+
+    <script>
+      document.querySelectorAll("details summary span input[type=checkbox]").forEach(
+        function(checkbox) {
+          var key = `${ location.href }-${ checkbox.id }`;
+
+          if(window.localStorage.getItem(key) === "true")
+            checkbox.checked = true;
+
+          this.addEventListener(
+            "change",
+            function() {
+              window.localStorage.setItem(key, checkbox.checked ? "true" : "false");
+            },
+          );
+        }
+      );
+    </script>
+
+    <!-- TODO(copier-ProjectScaffolding): Decorate code elements with a "copy code" button that copies to the clipboard -->
+  </body>
+</html>
