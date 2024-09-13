@@ -1,13 +1,15 @@
 # copier-ProjectScaffolding-Sample-PythonPackage
 
 <!-- BEGIN: Exclude Package -->
+<!-- [BEGIN] Badges -->
 [![License](https://img.shields.io/github/license/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage?color=dark-green)](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/master/LICENSE.txt)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage?color=dark-green)](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/commits/main/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/copier_ProjectScaffolding_Sample_PythonPackage?color=dark-green)](https://pypi.org/project/copier_ProjectScaffolding_Sample_PythonPackage/)
 [![PyPI - Version](https://img.shields.io/pypi/v/copier_ProjectScaffolding_Sample_PythonPackage?color=dark-green)](https://pypi.org/project/copier_ProjectScaffolding_Sample_PythonPackage/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/copier_ProjectScaffolding_Sample_PythonPackage)](https://pypistats.org/packages/copier_ProjectScaffolding_Sample_PythonPackage)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/copier-projectscaffolding-sample-pythonpackage)](https://pypistats.org/packages/copier-projectscaffolding-sample-pythonpackage)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/9264/badge)](https://www.bestpractices.dev/projects/9264)
 [![Code Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/davidbrownell/2f9d770d13e3a148424f374f74d41f4b/raw/copier-ProjectScaffolding-Sample-PythonPackage_coverage.json)](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/actions)
+<!-- [END] Badges -->
 <!-- END: Exclude Package -->
 
 Sample of the copier-ProjectScaffolding "Python Package" project type.
@@ -29,6 +31,7 @@ TODO: Complete this section
 
 <!-- BEGIN: Exclude Package -->
 ## Installation
+<!-- [BEGIN] Installation -->
 copier-ProjectScaffolding-Sample-PythonPackage can be installed via one of these methods:
 
 - [Installation via Executable](#installation-via-executable)
@@ -54,9 +57,12 @@ To install the copier-ProjectScaffolding-Sample-PythonPackage package via [pip](
 
 `pip install copier_ProjectScaffolding_Sample_PythonPackage`
 
+<!-- [END] Installation -->
 
 ## Development
-Please visit [Contributing](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md) and [Development](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/DEVELOPMENT.md) for information on contributing to this project.
+<!-- [BEGIN] Development -->
+Please visit [Contributing](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md) and [Development](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/DEVELOPMENT.md) for information on contributing to this project.<!-- [END] Development -->
+
 <!-- END: Exclude Package -->
 
 ## Additional Information
@@ -64,12 +70,14 @@ Additional information can be found at these locations.
 
 | Title | Document | Description |
 | --- | --- | --- |
+<!-- [BEGIN] Additional Information -->
 | Code of Conduct | [CODE_OF_CONDUCT.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CODE_OF_CONDUCT.md) | Information about the the norms, rules, and responsibilities we adhere to when participating in this open source community. |
 | Contributing | [CONTRIBUTING.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/CONTRIBUTING.md) | Information about contributing code changes to this project. |
 | Development | [DEVELOPMENT.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/DEVELOPMENT.md) | Information about development activities involved in making changes to this project. |
 | Governance | [GOVERNANCE.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/GOVERNANCE.md) | Information about how this project is governed. |
 | Maintainers | [MAINTAINERS.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/MAINTAINERS.md) | Information about individuals who maintain this project. |
 | Security | [SECURITY.md](https://github.com/gt-sse-center/copier-ProjectScaffolding-Sample-PythonPackage/blob/main/SECURITY.md) | Information about how to privately report security issues associated with this project. |
+<!-- [END] Additional Information -->
 
 ## License
 
